@@ -1,0 +1,174 @@
+{
+  "name": "vim-normal",
+  "displayName": "Vim-Normal",
+  "description": "Customized Vim-normal-mode-like navigation layer plugin",
+  "icon": "media/icon.png",
+  "version": "1.0.1",
+  "engines": {
+    "vscode": "^1.102.3"
+  },
+  "galleryBanner": {
+    "color": "#0b151b",
+    "theme": "dark"
+  },
+  "categories": [
+    "Keymaps",
+    "Other"
+  ],
+  "keywords": [
+    "vim",
+    "keymaps"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pmburov/vim-normal"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:type"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "keybindings": [
+      {
+        "key": "escape",
+        "command": "vim-normal.stop",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "alt+\\",
+        "command": "vim-normal.start",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "m",
+        "command": "vim-normal.mark-add",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "`",
+        "command": "vim-normal.mark-go",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "c i",
+        "command": "vim-normal.change-inside",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "c a",
+        "command": "vim-normal.change-around",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "z z",
+        "command": "vim-normal.center-screen",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "shift+[",
+        "command": "vim-normal.move-up",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "shift+]",
+        "command": "vim-normal.move-down",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "g g",
+        "command": "vim-normal.file-start",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "shift+g",
+        "command": "vim-normal.file-end",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "s v",
+        "command": "vim-normal.split-vertical",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "x x",
+        "command": "vim-normal.close",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "]",
+        "command": "vim-normal.right-panel",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "[",
+        "command": "vim-normal.left-panel",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "f f",
+        "command": "vim-normal.flash-go",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "f r",
+        "command": "vim-normal.flash-up",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "f v",
+        "command": "vim-normal.flash-down",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "f s",
+        "command": "vim-normal.flash-select",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      }
+    ],
+    "commands": [
+      {
+        "command": "vim-normal.start",
+        "title": "Vim-Normal: Start"
+      }
+    ],
+    "configuration": {
+      "title": "Vim-Normal",
+      "properties": {
+        "vim-normal.showInputIndicator": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show status line indicator when plugin is waiting for input"
+        },
+        "vim-normal.centerScreenAfterJump": {
+          "type": "boolean",
+          "default": true,
+          "description": "Center screen on cursor position after the jump"
+        },
+        "vim-normal.useSameHotkeyToAddAndGo": {
+          "type": "boolean",
+          "default": false,
+          "description": "By default reusing the same mark character will override the position of the mark if it already exists. Use this option to go to mark instead of overriding it"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts --fix",
+    "update": "npx npm-check-updates -i",
+    "deps": "npm i -g @vscode/vsce",
+    "pack": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@types/node": "^24.1.0",
+    "@types/vscode": "^1.102.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.32.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.38.0"
+  }
+}
