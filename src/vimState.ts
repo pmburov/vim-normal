@@ -6,9 +6,11 @@ export class VimState {
   static listenForInput: boolean
   static typeHandler: vscode.Disposable | null = null
   static config: MarksConfig
+  static amount: string = ""
 
   static init(context: vscode.ExtensionContext) {
     this.listenForInput = false
+    this.amount = ""
 
     this.statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 10)
     context.subscriptions.push(this.statusBar)
@@ -29,7 +31,7 @@ export class VimState {
     })
   }
 
-  static add() {
+  static start() {
     vscode.commands.executeCommand("setContext", "vim-normal.mode", "input")
     const editor = vscode.window.activeTextEditor
     if (editor) {
@@ -47,6 +49,7 @@ export class VimState {
 
   static stop() {
     this.listenForInput = false
+    this.amount = ""
     this.statusBar.text = ""
     this.statusBar.hide()
     if (this.typeHandler) {
@@ -62,6 +65,10 @@ export class VimState {
 
   static async type(text: string) {
     if (this.listenForInput) {
+      if (text.match(/[0-9]/)) {
+        this.amount += text
+        return true
+      }
       this.stop()
     } else {
       vscode.commands.executeCommand("default:type", { text: text })

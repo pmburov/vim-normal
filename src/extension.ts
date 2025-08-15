@@ -5,7 +5,7 @@ export function activate(context: vscode.ExtensionContext) {
   VimState.init(context)
 
   context.subscriptions.push(vscode.commands.registerCommand("vim-normal.start", () => {
-    VimState.add()
+    VimState.start()
   }))
 
   context.subscriptions.push(vscode.commands.registerCommand("vim-normal.stop", () => {
@@ -59,6 +59,65 @@ export function activate(context: vscode.ExtensionContext) {
       "to": "nextBlankLine",
       "by": "wrappedLine"
     })
+  }))
+
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.up", () => {
+    if (VimState.amount.match(/\d+/)) {
+      vscode.commands.executeCommand("cursorMove", {
+        "to": "up",
+        "by": "line",
+        "value": Number(VimState.amount)
+      })
+      VimState.stop()
+    }
+    vscode.commands.executeCommand("cursorUp")
+  }))
+
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.down", () => {
+    if (VimState.amount.match(/\d+/)) {
+      vscode.commands.executeCommand("cursorMove", {
+        "to": "down",
+        "by": "line",
+        "value": Number(VimState.amount)
+      })
+      VimState.stop()
+    }
+    vscode.commands.executeCommand("cursorDown")
+  }))
+
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.left", () => {
+    if (VimState.amount.match(/\d+/)) {
+      vscode.commands.executeCommand("cursorMove", {
+        "to": "left",
+        "by": "line",
+        "value": Number(VimState.amount)
+      })
+      VimState.stop()
+    }
+    vscode.commands.executeCommand("cursorLeft")
+  }))
+
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.right", () => {
+    if (VimState.amount.match(/\d+/)) {
+      vscode.commands.executeCommand("cursorMove", {
+        "to": "right",
+        "by": "line",
+        "value": Number(VimState.amount)
+      })
+      VimState.stop()
+    }
+    vscode.commands.executeCommand("cursorRight")
+  }))
+
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.toggle-relative-linenumbers", () => {
+    const vscodeSettings = vscode.workspace.getConfiguration()
+    const current = vscodeSettings.get("editor.lineNumbers")
+    if (current !== "relative") {
+      vscodeSettings.update("editor.lineNumbers", "relative", 1)
+    } else {
+      vscodeSettings.update("editor.lineNumbers", "on", 1)
+    }
+    VimState.stop()
   }))
 
   context.subscriptions.push(vscode.commands.registerCommand("vim-normal.file-start", () => {

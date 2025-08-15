@@ -77,6 +77,26 @@
         "when": "editorTextFocus && vim-normal.mode === input"
       },
       {
+        "key": "up",
+        "command": "vim-normal.up",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "down",
+        "command": "vim-normal.down",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "left",
+        "command": "vim-normal.left",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "right",
+        "command": "vim-normal.right",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
         "key": "g g",
         "command": "vim-normal.file-start",
         "when": "editorTextFocus && vim-normal.mode === input"
@@ -124,6 +144,11 @@
       {
         "key": "f s",
         "command": "vim-normal.flash-select",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "t l",
+        "command": "vim-normal.toggle-relative-linenumbers",
         "when": "editorTextFocus && vim-normal.mode === input"
       }
     ],

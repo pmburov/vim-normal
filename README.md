@@ -32,3 +32,12 @@ It combines some default-ish Vim stuff with my custom keybindings partially port
 | f r     | Flash line upwards              |
 | f v     | Flash line downwards            |
 | f s     | Flash select mode               |
+| t l     | Toggle relative line numbers    |
+
+## Behaviors
+
+`[0-9]+` + `up | down | left | right` - go N lines or characters in a direction
+
+
+
+
