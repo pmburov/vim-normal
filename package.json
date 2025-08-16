@@ -150,6 +150,21 @@
         "key": "t l",
         "command": "vim-normal.toggle-relative-linenumbers",
         "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "g h",
+        "command": "vim-normal.git-preview-hunk",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "g s",
+        "command": "vim-normal.git-stage-hunk",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "g r",
+        "command": "vim-normal.git-revert-hunk",
+        "when": "editorTextFocus && vim-normal.mode === input"
       }
     ],
     "commands": [

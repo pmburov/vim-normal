@@ -170,6 +170,21 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.executeCommand("vim-flash.select")
   }))
 
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.git-preview-hunk", () => {
+    vscode.commands.executeCommand("editor.action.dirtydiff.next")
+    VimState.stop()
+  }))
+
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.git-stage-hunk", () => {
+    vscode.commands.executeCommand("git.diff.stageHunk")
+    VimState.stop()
+  }))
+
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.git-revert-hunk", () => {
+    vscode.commands.executeCommand("git.revertSelectedRanges")
+    VimState.stop()
+  }))
+
   const configChangeListener = vscode.workspace.onDidChangeConfiguration(event => {
     if (event.affectsConfiguration('vim-normal')) {
       const config = vscode.workspace.getConfiguration("vim-normal")

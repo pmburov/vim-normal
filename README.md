@@ -33,6 +33,9 @@ It combines some default-ish Vim stuff with my custom keybindings partially port
 | f v     | Flash line downwards            |
 | f s     | Flash select mode               |
 | t l     | Toggle relative line numbers    |
+| g h     | Git: Preview hunk               |
+| g s     | Git: Stage hunk                 |
+| g r     | Git: Reverse hunk               |
 
 ## Behaviors
 
