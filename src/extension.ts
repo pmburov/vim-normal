@@ -1,5 +1,6 @@
 import * as vscode from "vscode"
 import { VimState } from "./vimState"
+import { stageCurrentFile, unstageCurrentFile } from "./git"
 
 export function activate(context: vscode.ExtensionContext) {
   VimState.init(context)
@@ -182,6 +183,16 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(vscode.commands.registerCommand("vim-normal.git-revert-hunk", () => {
     vscode.commands.executeCommand("git.revertSelectedRanges")
+    VimState.stop()
+  }))
+
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.git-stage-file", () => {
+    stageCurrentFile()
+    VimState.stop()
+  }))
+
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.git-unstage-file", () => {
+    unstageCurrentFile()
     VimState.stop()
   }))
 

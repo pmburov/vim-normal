@@ -165,6 +165,16 @@
         "key": "g r",
         "command": "vim-normal.git-revert-hunk",
         "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "g t",
+        "command": "vim-normal.git-stage-file",
+        "when": "editorTextFocus && vim-normal.mode === input"
+      },
+      {
+        "key": "g u",
+        "command": "vim-normal.git-unstage-file",
+        "when": "editorTextFocus && vim-normal.mode === input"
       }
     ],
     "commands": [

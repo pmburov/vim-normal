@@ -36,6 +36,8 @@ It combines some default-ish Vim stuff with my custom keybindings partially port
 | g h     | Git: Preview hunk               |
 | g s     | Git: Stage hunk                 |
 | g r     | Git: Reverse hunk               |
+| g t     | Git: Stage current file         |
+| g u     | Git: Unstage current file       |
 
 ## Behaviors
 
