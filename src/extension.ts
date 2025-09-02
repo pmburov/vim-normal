@@ -45,7 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(vscode.commands.registerCommand("vim-normal.center-screen", () => {
     VimState.stop()
-    vscode.commands.executeCommand("vim-marks.center")
+    VimState.center()
   }))
 
   context.subscriptions.push(vscode.commands.registerCommand("vim-normal.move-up", () => {
@@ -121,14 +121,16 @@ export function activate(context: vscode.ExtensionContext) {
     VimState.stop()
   }))
 
-  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.file-start", () => {
-    vscode.commands.executeCommand("cursorTop")
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.file-start", async () => {
+    await vscode.commands.executeCommand("cursorTop")
     VimState.stop()
+    VimState.center()
   }))
 
-  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.file-end", () => {
-    vscode.commands.executeCommand("cursorBottom")
+  context.subscriptions.push(vscode.commands.registerCommand("vim-normal.file-end", async () => {
+    await vscode.commands.executeCommand("cursorBottom")
     VimState.stop()
+    VimState.center()
   }))
 
   context.subscriptions.push(vscode.commands.registerCommand("vim-normal.split-vertical", () => {

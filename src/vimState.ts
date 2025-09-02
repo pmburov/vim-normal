@@ -25,6 +25,14 @@ export class VimState {
     this.config = getConfig(config)
   }
 
+  static async center() {
+    const currentLineNumber = vscode.window.activeTextEditor?.selection.start.line;
+    await vscode.commands.executeCommand("revealLine", {
+      lineNumber: currentLineNumber,
+      at: "center"
+    });
+  }
+
   static regTypeHandler() {
     this.typeHandler = vscode.commands.registerCommand("type", (text) => {
       this.type(text.text)
